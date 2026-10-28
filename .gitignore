@@ -1,0 +1,30 @@
+# Flutter / Dart
+.dart_tool/
+.packages
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+
+# IDEs
+*.iml
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local secrets (f95zone session/aria2 secret must never be committed)
+*.secret
+.env
+# Widget Preview related
+.widget_preview/
+
+# Golden test failure artifacts
+/test/failures/
+
+# Internal planning notes (kept out of the public repo)
+.scratch/

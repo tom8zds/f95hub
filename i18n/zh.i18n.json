@@ -1,0 +1,289 @@
+{
+  "app": {
+    "title": "f95hub",
+    "loadConfigFailed": "配置加载失败"
+  },
+  "nav": {
+    "games": "游戏",
+    "library": "库",
+    "downloads": "下载",
+    "settings": "设置",
+    "dashboard": "仪表盘"
+  },
+  "common": {
+    "retry": "重试",
+    "cancel": "取消",
+    "apply": "应用",
+    "browse": "浏览",
+    "close": "关闭",
+    "previous": "上一页",
+    "next": "下一页",
+    "add": "添加",
+    "download": "下载",
+    "all": "全部",
+    "none": "无",
+    "noMatches": "无匹配结果",
+    "save": "保存",
+    "viewDetail": "查看详情"
+  },
+  "buttons": {
+    "createCache": "创建缓存",
+    "continueBuild": "继续构建",
+    "refreshCache": "刷新缓存",
+    "deleteCache": "删除缓存",
+    "finish": "完成",
+    "logIn": "登录",
+    "logOut": "退出登录",
+    "importGame": "导入游戏",
+    "addToLibrary": "加入库",
+    "openInBrowser": "在浏览器中打开",
+    "openFolder": "打开目录",
+    "launchGame": "启动游戏",
+    "remove": "移除",
+    "keepFiles": "保留文件",
+    "deleteFiles": "删除文件",
+    "importSelected": "导入所选（{count}）"
+  },
+  "settings": {
+    "title": "设置",
+    "language": "语言",
+    "theme": "主题",
+    "storage": {
+      "title": "存储目录",
+      "none": "未设置存储目录",
+      "fallback": "库根目录回退到下载目录：{path}"
+    },
+    "network": {
+      "title": "网络",
+      "fetchInterval": "抓取间隔(秒)",
+      "fetchIntervalHelp": "两次请求之间的最小间隔；过小容易触发 429，默认 2 秒"
+    },
+    "aria2": {
+      "title": "aria2",
+      "rpcPort": "RPC 端口",
+      "rpcSecret": "RPC 密钥（可选，仅保存在内存中）",
+      "globalLimit": "全局限速（例如 1M）",
+      "perTaskLimit": "单任务限速（例如 10K）",
+      "noCap": "留空表示不限速"
+    },
+    "login": {
+      "title": "f95zone 登录",
+      "loggedIn": "已登录",
+      "notLoggedIn": "未登录",
+      "sessionCookie": "会话 Cookie",
+      "sessionCookieHelp": "粘贴浏览器中的 xf_user/cf_clearance"
+    }
+  },
+  "languages": {
+    "system": "跟随系统",
+    "en": "English",
+    "zh": "中文"
+  },
+  "theme": {
+    "dark": "深色主题",
+    "switchToLight": "切换到浅色主题",
+    "switchToDark": "切换到深色主题",
+    "presets": {
+      "material": "Material",
+      "materialYou": "Material You",
+      "blue": "蓝色",
+      "green": "绿色",
+      "red": "红色"
+    }
+  },
+  "cache": {
+    "title": "缓存",
+    "gamesCached": {
+      "one": "已缓存 1 个游戏",
+      "other": "已缓存 {n} 个游戏"
+    },
+    "lastUpdatedNever": "最后更新：从未",
+    "lastUpdated": "最后更新：{date}",
+    "reached": "已到 {page} / {total} 页",
+    "page": "第 {page} / {total} 页",
+    "fetchingPageCount": "正在获取页数…",
+    "failed": "缓存操作失败：{error}"
+  },
+  "games": {
+    "searchHint": "搜索游戏",
+    "filters": "过滤器",
+    "sort": "排序",
+    "refresh": "刷新",
+    "throttled": "被限流，正在重试",
+    "loadFailed": "加载游戏失败",
+    "empty": "没有游戏",
+    "indexLoadFailed": "加载游戏索引失败",
+    "indexEmptyTitle": "游戏索引为空",
+    "indexEmptyMessage": "在设置中构建游戏缓存，即可离线搜索整个目录。",
+    "searchByTitle": "按标题搜索"
+  },
+  "sort": {
+    "heading": "排序",
+    "date": "日期",
+    "likes": "点赞",
+    "views": "浏览",
+    "title": "标题",
+    "rating": "评分"
+  },
+  "filters": {
+    "title": "过滤器",
+    "category": "类别",
+    "engine": "引擎",
+    "status": "状态",
+    "all": "全部",
+    "search": "搜索",
+    "clear": "清除",
+    "date": {
+      "anytime": "不限",
+      "today": "今天",
+      "last7": "7 天内",
+      "last30": "30 天内"
+    }
+  },
+  "pagination": {
+    "previous": "上一页",
+    "next": "下一页",
+    "page": "第 {page} / {total} 页"
+  },
+  "library": {
+    "title": "库",
+    "importFolder": "导入本地文件夹",
+    "importFromDirectory": "从目录导入",
+    "loadFailed": "加载库失败",
+    "empty": "库中还没有游戏",
+    "searchHint": "搜索库",
+    "filters": "过滤器",
+    "sort": "排序",
+    "tags": "标签",
+    "onlyUpdates": "仅看有更新",
+    "sortTitle": "标题",
+    "sortUpdated": "最近更新",
+    "sortAdded": "最近加入",
+    "hasUpdate": "有更新",
+    "versionLocal": "本地",
+    "versionLatest": "最新",
+    "versionDifferent": "不同",
+    "editVersion": "编辑版本",
+    "editVersionTitle": "编辑本地版本",
+    "versionFieldLabel": "版本",
+    "removeTitle": "移除游戏",
+    "removeConfirm": "从库中移除「{title}」？",
+    "removeFailed": "移除失败：{error}",
+    "playTime": "游玩时长",
+    "totalPlayTime": "总计：{duration}",
+    "playSessions": "游玩记录",
+    "noPlaySessions": "还没有游玩记录",
+    "launchEntry": "启动项",
+    "noLaunchEntry": "未选择",
+    "chooseLaunchEntry": "选择启动项",
+    "changeLaunchEntry": "更改",
+    "noLaunchEntries": "安装目录中未找到 .exe 或 .bat",
+    "inProgress": "进行中",
+    "launchFailed": "启动失败：{error}"
+  },
+  "detail": {
+    "loadFailed": "加载详情失败",
+    "screenshots": "截图",
+    "tags": "标签",
+    "category": "类别",
+    "engine": "引擎",
+    "developer": "开发者",
+    "version": "版本",
+    "releaseDate": "发布日期",
+    "lastUpdated": "最后更新",
+    "author": "作者",
+    "description": "描述",
+    "downloadLinks": "下载链接"
+  },
+  "downloads": {
+    "title": "下载",
+    "empty": "暂无下载",
+    "globalSpeedLimit": "全局限速",
+    "perTaskSpeedLimit": "单任务限速",
+    "noLimit": "不限速",
+    "pause": "暂停",
+    "resume": "继续",
+    "status": {
+      "active": "下载中",
+      "queued": "排队中",
+      "paused": "已暂停",
+      "complete": "已完成",
+      "error": "错误",
+      "removed": "已移除"
+    }
+  },
+  "mirrors": {
+    "notLoggedIn": "未登录 — 请先登录 f95zone 以查看下载链接",
+    "loadFailed": "加载下载链接失败",
+    "empty": "无下载链接",
+    "unsupported": "不支持",
+    "supported": "可下载",
+    "kind": {
+      "direct": "直链",
+      "magnet": "磁力",
+      "torrent": "种子"
+    }
+  },
+  "import": {
+    "title": "导入游戏",
+    "directoryTitle": "目录导入",
+    "chooseDifferentFolder": "选择其他文件夹",
+    "pickFolder": "选择要扫描的文件夹",
+    "scanFailed": "扫描文件夹失败",
+    "noFolders": "未找到可导入的文件夹",
+    "leftTitle": "扫描目录",
+    "rightTitle": "已匹配（{count}）",
+    "leftEmpty": "没有待匹配的目录",
+    "rightEmpty": "点击左侧目录进行匹配",
+    "importRight": "导入（{count}）",
+    "associateTitle": "关联 f95zone 游戏",
+    "installPath": "安装路径（可选）",
+    "localVersion": "本地版本（可选）",
+    "scraping": "正在抓取…",
+    "matched": "已匹配",
+    "noMatch": "未匹配",
+    "changeMatch": "更改匹配的游戏",
+    "cacheIncomplete": "缓存 {built}/{total} 页，可能缺后续字母",
+    "imported": "已导入：{title}",
+    "cancelled": "已取消",
+    "failed": "失败：{error}",
+    "failedImport": "导入失败：{error}",
+    "added": "已加入库",
+    "addFailed": "加入库失败：{error}",
+    "autoMatching": "正在自动匹配（{done}/{total}）"
+  },
+  "setup": {
+    "title": "设置向导",
+    "welcome": "欢迎使用 f95hub。请配置下载目录和 aria2 以开始使用。",
+    "downloadDirectory": "下载目录",
+    "noDirectory": "未选择目录",
+    "speedLimits": "限速",
+    "loginOptional": "f95zone 登录（可选）"
+  },
+  "gallery": {
+    "close": "关闭",
+    "previous": "上一张",
+    "next": "下一张"
+  },
+  "dashboard": {
+    "libraryGames": "库中游戏",
+    "updatesAvailable": "可更新",
+    "downloadTasks": "下载任务",
+    "gameIndex": "索引缓存",
+    "playTime": "游玩时长",
+    "gamesPlayed": "已玩游戏",
+    "lastUpdated": "最后更新：{time}",
+    "never": "从未",
+    "manageLibrary": "管理本地收藏",
+    "quickAccess": "快捷入口"
+  },
+  "time": {
+    "justNow": "刚刚",
+    "minutesAgo": "{n} 分钟前",
+    "hoursAgo": "{n} 小时前",
+    "daysAgo": "{n} 天前",
+    "weeksAgo": "{n} 周前",
+    "monthsAgo": "{n} 个月前",
+    "yearsAgo": "{n} 年前"
+  }
+}

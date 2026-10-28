@@ -1,0 +1,289 @@
+{
+  "app": {
+    "title": "f95hub",
+    "loadConfigFailed": "Failed to load configuration"
+  },
+  "nav": {
+    "games": "Games",
+    "library": "Library",
+    "downloads": "Downloads",
+    "settings": "Settings",
+    "dashboard": "Dashboard"
+  },
+  "common": {
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "apply": "Apply",
+    "browse": "Browse",
+    "close": "Close",
+    "previous": "Previous",
+    "next": "Next",
+    "add": "Add",
+    "download": "Download",
+    "all": "All",
+    "none": "none",
+    "noMatches": "No matches",
+    "save": "Save",
+    "viewDetail": "View detail"
+  },
+  "buttons": {
+    "createCache": "Create cache",
+    "continueBuild": "Continue build",
+    "refreshCache": "Refresh cache",
+    "deleteCache": "Delete cache",
+    "finish": "Finish",
+    "logIn": "Log in",
+    "logOut": "Log out",
+    "importGame": "Import game",
+    "addToLibrary": "Add to library",
+    "openInBrowser": "Open in browser",
+    "openFolder": "Open folder",
+    "launchGame": "Launch game",
+    "remove": "Remove",
+    "keepFiles": "Keep files",
+    "deleteFiles": "Delete files",
+    "importSelected": "Import selected ({count})"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "storage": {
+      "title": "Storage directory",
+      "none": "No storage directory set",
+      "fallback": "Library root falls back to download directory: {path}"
+    },
+    "network": {
+      "title": "Network",
+      "fetchInterval": "Fetch interval (seconds)",
+      "fetchIntervalHelp": "Minimum gap between two requests; too small may trigger 429. Default 2 seconds."
+    },
+    "aria2": {
+      "title": "aria2",
+      "rpcPort": "RPC port",
+      "rpcSecret": "RPC secret (optional, kept in memory)",
+      "globalLimit": "Global limit (e.g. 1M)",
+      "perTaskLimit": "Per-task limit (e.g. 10K)",
+      "noCap": "Leave empty for no cap"
+    },
+    "login": {
+      "title": "f95zone login",
+      "loggedIn": "Logged in",
+      "notLoggedIn": "Not logged in",
+      "sessionCookie": "Session cookie",
+      "sessionCookieHelp": "Paste xf_user/cf_clearance from your browser"
+    }
+  },
+  "languages": {
+    "system": "System",
+    "en": "English",
+    "zh": "中文"
+  },
+  "theme": {
+    "dark": "Dark theme",
+    "switchToLight": "Switch to light theme",
+    "switchToDark": "Switch to dark theme",
+    "presets": {
+      "material": "Material",
+      "materialYou": "Material You",
+      "blue": "Blue",
+      "green": "Green",
+      "red": "Red"
+    }
+  },
+  "cache": {
+    "title": "Cache",
+    "gamesCached": {
+      "one": "1 game cached",
+      "other": "{n} games cached"
+    },
+    "lastUpdatedNever": "Last updated: never",
+    "lastUpdated": "Last updated: {date}",
+    "reached": "Reached {page} / {total} pages",
+    "page": "Page {page} / {total}",
+    "fetchingPageCount": "Fetching page count…",
+    "failed": "Cache operation failed: {error}"
+  },
+  "games": {
+    "searchHint": "Search games",
+    "filters": "Filters",
+    "sort": "Sort",
+    "refresh": "Refresh",
+    "throttled": "Rate limited, retrying",
+    "loadFailed": "Failed to load games",
+    "empty": "No games",
+    "indexLoadFailed": "Failed to load the game index",
+    "indexEmptyTitle": "Game index is empty",
+    "indexEmptyMessage": "Build the game cache in Settings to search the whole catalogue offline.",
+    "searchByTitle": "Search by title"
+  },
+  "sort": {
+    "heading": "Sort",
+    "date": "Date",
+    "likes": "Likes",
+    "views": "Views",
+    "title": "Title",
+    "rating": "Rating"
+  },
+  "filters": {
+    "title": "Filters",
+    "category": "Category",
+    "engine": "Engine",
+    "status": "Status",
+    "all": "All",
+    "search": "Search",
+    "clear": "Clear",
+    "date": {
+      "anytime": "Anytime",
+      "today": "Today",
+      "last7": "< 7 days",
+      "last30": "< 30 days"
+    }
+  },
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page {page} / {total}"
+  },
+  "library": {
+    "title": "Library",
+    "importFolder": "Import a local folder",
+    "importFromDirectory": "Import from a directory",
+    "loadFailed": "Failed to load library",
+    "empty": "No games in your library yet",
+    "searchHint": "Search library",
+    "filters": "Filters",
+    "sort": "Sort",
+    "tags": "Tags",
+    "onlyUpdates": "Updates only",
+    "sortTitle": "Title",
+    "sortUpdated": "Recently updated",
+    "sortAdded": "Recently added",
+    "hasUpdate": "Update available",
+    "versionLocal": "Local",
+    "versionLatest": "Latest",
+    "versionDifferent": "Different",
+    "editVersion": "Edit version",
+    "editVersionTitle": "Edit local version",
+    "versionFieldLabel": "Version",
+    "removeTitle": "Remove game",
+    "removeConfirm": "Remove \"{title}\" from your library?",
+    "removeFailed": "Failed to remove: {error}",
+    "playTime": "Play time",
+    "totalPlayTime": "Total: {duration}",
+    "playSessions": "Sessions",
+    "noPlaySessions": "No play sessions yet",
+    "launchEntry": "Launch entry",
+    "noLaunchEntry": "Not selected",
+    "chooseLaunchEntry": "Choose launch entry",
+    "changeLaunchEntry": "Change",
+    "noLaunchEntries": "No .exe or .bat found in the install folder",
+    "inProgress": "In progress",
+    "launchFailed": "Failed to launch: {error}"
+  },
+  "detail": {
+    "loadFailed": "Failed to load details",
+    "screenshots": "Screenshots",
+    "tags": "Tags",
+    "category": "Category",
+    "engine": "Engine",
+    "developer": "Developer",
+    "version": "Version",
+    "releaseDate": "Release date",
+    "lastUpdated": "Last updated",
+    "author": "Author",
+    "description": "Description",
+    "downloadLinks": "Download links"
+  },
+  "downloads": {
+    "title": "Downloads",
+    "empty": "No downloads yet",
+    "globalSpeedLimit": "Global speed limit",
+    "perTaskSpeedLimit": "Per-task speed limit",
+    "noLimit": "No limit",
+    "pause": "Pause",
+    "resume": "Resume",
+    "status": {
+      "active": "Downloading",
+      "queued": "Queued",
+      "paused": "Paused",
+      "complete": "Complete",
+      "error": "Error",
+      "removed": "Removed"
+    }
+  },
+  "mirrors": {
+    "notLoggedIn": "Not logged in — log in to f95zone to view download links",
+    "loadFailed": "Failed to load download links",
+    "empty": "No download links",
+    "unsupported": "Unsupported",
+    "supported": "Downloadable",
+    "kind": {
+      "direct": "Direct link",
+      "magnet": "Magnet",
+      "torrent": "Torrent"
+    }
+  },
+  "import": {
+    "title": "Import game",
+    "directoryTitle": "Directory import",
+    "chooseDifferentFolder": "Choose a different folder",
+    "pickFolder": "Pick a folder to scan",
+    "scanFailed": "Failed to scan folder",
+    "noFolders": "No importable folders found",
+    "leftTitle": "Scanned folders",
+    "rightTitle": "Matched ({count})",
+    "leftEmpty": "No folders left to match",
+    "rightEmpty": "Select a folder on the left to match it",
+    "importRight": "Import ({count})",
+    "associateTitle": "Associate f95zone game",
+    "installPath": "Install path (optional)",
+    "localVersion": "Local version (optional)",
+    "scraping": "Scraping…",
+    "matched": "Matched",
+    "noMatch": "Not matched",
+    "changeMatch": "Change matched game",
+    "cacheIncomplete": "Cache has {built}/{total} pages — later letters may be missing",
+    "imported": "Imported: {title}",
+    "cancelled": "Cancelled",
+    "failed": "Failed: {error}",
+    "failedImport": "Failed to import: {error}",
+    "added": "Added to library",
+    "addFailed": "Failed to add: {error}",
+    "autoMatching": "Auto-matching folders {done}/{total}"
+  },
+  "setup": {
+    "title": "Setup",
+    "welcome": "Welcome to f95hub. Configure your download directory and aria2 to get started.",
+    "downloadDirectory": "Download directory",
+    "noDirectory": "No directory selected",
+    "speedLimits": "Speed limits",
+    "loginOptional": "f95zone login (optional)"
+  },
+  "gallery": {
+    "close": "Close",
+    "previous": "Previous image",
+    "next": "Next image"
+  },
+  "dashboard": {
+    "libraryGames": "Library games",
+    "updatesAvailable": "Updates available",
+    "downloadTasks": "Download tasks",
+    "gameIndex": "Game index",
+    "playTime": "Play time",
+    "gamesPlayed": "Games played",
+    "lastUpdated": "Last updated: {time}",
+    "never": "never",
+    "manageLibrary": "Manage your local collection",
+    "quickAccess": "Quick access"
+  },
+  "time": {
+    "justNow": "Just now",
+    "minutesAgo": "{n} min ago",
+    "hoursAgo": "{n} h ago",
+    "daysAgo": "{n} d ago",
+    "weeksAgo": "{n} w ago",
+    "monthsAgo": "{n} mo ago",
+    "yearsAgo": "{n} y ago"
+  }
+}
