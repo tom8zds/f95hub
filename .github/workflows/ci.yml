@@ -3,6 +3,7 @@ name: CI
 on:
   push:
     branches: [main]
+    tags: ['v*']
   pull_request:
   workflow_dispatch:
 
@@ -55,3 +56,23 @@ jobs:
           name: f95hub-windows
           path: build/windows/x64/runner/Release/
           if-no-files-found: ignore
+
+  release:
+    name: Release
+    # Publish a GitHub Release whenever a v* tag is pushed.
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build-windows
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: f95hub-windows
+          path: f95hub-windows
+      - name: Package
+        run: Compress-Archive -Path f95hub-windows\* -DestinationPath f95hub-windows.zip
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: f95hub-windows.zip
+          generate_release_notes: true
