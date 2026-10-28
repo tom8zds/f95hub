@@ -1,0 +1,75 @@
+# GitLab CI for f95hub.
+#
+# - analyze / test: Linux runner with the Flutter image.
+# - build-windows:  Windows runner (needs a runner tagged `windows` with the
+#                   Flutter SDK in PATH) building the release bundle.
+# - release:        turns a pushed tag into a GitLab Release whose asset links
+#                   to the Windows build artifact.
+
+stages:
+  - test
+  - build
+  - release
+
+# Shared Linux setup: the Flutter image plus a pub cache.
+.flutter_linux:
+  image: ghcr.io/cirruslabs/flutter:stable
+  cache:
+    key: flutter-pub
+    paths:
+      - .pub-cache/
+  before_script:
+    - flutter pub get
+
+analyze:
+  extends: .flutter_linux
+  stage: test
+  script:
+    - flutter analyze
+
+test:
+  extends: .flutter_linux
+  stage: test
+  script:
+    - apt-get update && apt-get install -y libsqlite3-dev
+    - flutter test
+
+# Windows release build. Requires a runner tagged `windows` with Flutter
+# available on PATH; override `tags` if your runner uses a different label.
+build-windows:
+  stage: build
+  tags:
+    - windows
+  rules:
+    # Build on the default branch and on tags, so a release has a fresh bundle.
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_TAG
+  before_script:
+    - flutter pub get
+  script:
+    - flutter build windows --release
+  artifacts:
+    name: "f95hub-windows-$CI_COMMIT_SHORT_SHA"
+    paths:
+      - build/windows/x64/runner/Release/
+    expire_in: 1 week
+
+# GitLab Release: pushes a release for the tag, linking the Windows artifact.
+release:
+  stage: release
+  needs:
+    - job: build-windows
+      artifacts: true
+  rules:
+    - if: $CI_COMMIT_TAG
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  script:
+    - echo "Publishing f95hub $CI_COMMIT_TAG"
+  release:
+    name: "f95hub $CI_COMMIT_TAG"
+    tag_name: "$CI_COMMIT_TAG"
+    description: "Windows build of f95hub $CI_COMMIT_TAG."
+    assets:
+      links:
+        - name: "f95hub (Windows x64)"
+          url: "$CI_PROJECT_URL/-/jobs/artifacts/$CI_COMMIT_TAG/download?job=build-windows"
