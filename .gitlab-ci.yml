@@ -1,8 +1,9 @@
 # GitLab CI for f95hub.
 #
-# - analyze / test: Linux runner with the Flutter image.
-# - build-windows:  Windows runner (needs a runner tagged `windows` with the
-#                   Flutter SDK in PATH) building the release bundle.
+# - analyze:        Linux runner with the Flutter image (lint only).
+# - test:           Windows runner, so golden comparisons use the same platform
+#                   the baselines were rendered on.
+# - build-windows:  Windows runner building the release bundle.
 # - release:        turns a pushed tag into a GitLab Release whose asset links
 #                   to the Windows build artifact.
 
@@ -27,11 +28,14 @@ analyze:
   script:
     - flutter analyze
 
+# The full suite runs on Windows because test/goldens are Windows-rendered.
 test:
-  extends: .flutter_linux
   stage: test
+  tags:
+    - windows
+  before_script:
+    - flutter pub get
   script:
-    - apt-get update && apt-get install -y libsqlite3-dev
     - flutter test
 
 # Windows release build. Requires a runner tagged `windows` with Flutter
