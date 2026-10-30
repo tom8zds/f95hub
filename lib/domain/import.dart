@@ -159,24 +159,44 @@ Future<void> moveDirectory(
 /// Used by "加入库": the folder is *moved* into the library instead of being
 /// referenced in place. When [root] is null/blank (no storage root configured)
 /// the folder stays where it is and [source] is returned unchanged. When the
-/// folder already is the target directory the move is skipped. A conflicting
-/// target throws (via [moveDirectory]) without deleting the source.
+/// folder already is the target directory the move is skipped.
+///
+/// When a folder already exists at the target (e.g. importing a newer version
+/// of a game already in the library), the new copy lands beside it as
+/// `<title> <version>` (or `<title> <date>`, then `(2)`, `(3)`, …) instead of
+/// failing with "path already exists".
 Future<String> moveIntoLibraryRoot({
   required String? root,
   required String title,
   required String source,
+  String? version,
 }) async {
   final base = root?.trim();
   if (base == null || base.isEmpty) {
     return source;
   }
-  final dst = p.join(base, safeFolderName(title));
+  var dst = p.join(base, safeFolderName(title));
   if (p.equals(p.normalize(dst), p.normalize(source))) {
     return dst;
+  }
+  if (await FileSystemEntity.type(dst) != FileSystemEntityType.notFound) {
+    final trimmed = version?.trim() ?? '';
+    final suffix = trimmed.isNotEmpty ? trimmed : _folderStamp(DateTime.now());
+    dst = p.join(base, safeFolderName('$title $suffix'));
+    var n = 2;
+    while (await FileSystemEntity.type(dst) != FileSystemEntityType.notFound) {
+      dst = p.join(base, safeFolderName('$title $suffix ($n)'));
+      n++;
+    }
   }
   await moveDirectory(source, dst);
   return dst;
 }
+
+/// Compact date stamp (`20261030`) used to name a versioned import.
+String _folderStamp(DateTime at) =>
+    '${at.year}${at.month.toString().padLeft(2, '0')}'
+    '${at.day.toString().padLeft(2, '0')}';
 
 Future<void> _collectFiles(Directory dir, List<File> out) async {
   await for (final entity in dir.list(followLinks: false)) {

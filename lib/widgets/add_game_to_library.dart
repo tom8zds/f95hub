@@ -34,6 +34,7 @@ Future<void> addGameToLibrary(
             root: ref.read(libraryRootProvider),
             title: game.title,
             source: result.path,
+            version: result.version,
           );
     await ref
         .read(libraryProvider.notifier)

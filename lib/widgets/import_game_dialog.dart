@@ -53,6 +53,7 @@ class _ImportGameDialogState extends ConsumerState<ImportGameDialog> {
               root: ref.read(libraryRootProvider),
               title: game.title,
               source: widget.installPath,
+              version: version,
             );
       final imported = await ref.read(libraryProvider.notifier).scrapeAndStore(
             game,

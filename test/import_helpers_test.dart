@@ -299,22 +299,37 @@ void main() {
       expect(await File(p.join(target.path, 'a.txt')).exists(), isTrue);
     });
 
-    test('refuses to overwrite an existing target', () async {
+    test('keeps a new version beside an existing install', () async {
       final existing = Directory(p.join(storage.path, 'My Game'));
       await existing.create();
       await File(p.join(existing.path, 'old.txt')).writeAsString('old');
 
-      await expectLater(
-        moveIntoLibraryRoot(
-          root: storage.path,
-          title: 'My Game',
-          source: picked.path,
-        ),
-        throwsA(isA<FileSystemException>()),
+      final path = await moveIntoLibraryRoot(
+        root: storage.path,
+        title: 'My Game',
+        source: picked.path,
+        version: '1.5.0',
       );
 
+      expect(path, p.join(storage.path, 'My Game 1.5.0'));
       expect(await File(p.join(existing.path, 'old.txt')).exists(), isTrue);
-      expect(await File(p.join(picked.path, 'a.txt')).exists(), isTrue);
+      expect(await File(p.join(path, 'a.txt')).exists(), isTrue);
+      expect(await Directory(picked.path).exists(), isFalse);
+    });
+
+    test('numbers repeated imports of the same version', () async {
+      await Directory(p.join(storage.path, 'My Game')).create();
+      await Directory(p.join(storage.path, 'My Game 1.5.0')).create();
+
+      final path = await moveIntoLibraryRoot(
+        root: storage.path,
+        title: 'My Game',
+        source: picked.path,
+        version: '1.5.0',
+      );
+
+      expect(path, p.join(storage.path, 'My Game 1.5.0 (2)'));
+      expect(await File(p.join(path, 'a.txt')).exists(), isTrue);
     });
   });
 

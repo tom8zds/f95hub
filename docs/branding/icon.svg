@@ -1,38 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#2B2559"/>
-      <stop offset="1" stop-color="#5B4BD6"/>
-    </linearGradient>
-    <linearGradient id="pad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#F4EFFF"/>
-      <stop offset="1" stop-color="#C9BCF8"/>
-    </linearGradient>
-  </defs>
+  <!-- f95hub: black tile, white "F95", red "HUB" — the f95zone palette. -->
+  <rect width="1024" height="1024" rx="232" fill="#0B0B0B"/>
+  <rect x="40" y="40" width="944" height="944" rx="200" fill="none" stroke="#1F1F1F" stroke-width="6"/>
 
-  <!-- rounded app tile -->
-  <rect width="1024" height="1024" rx="232" fill="url(#bg)"/>
-
-  <!-- gamepad silhouette: twin grips + a raised centre -->
-  <path d="M 302 356
-           C 196 356 146 428 146 520
-           C 146 642 188 706 242 706
-           C 304 706 334 642 386 620
-           L 638 620
-           C 690 642 720 706 782 706
-           C 836 706 878 642 878 520
-           C 878 428 828 356 722 356 Z"
-        fill="url(#pad)"/>
-
-  <!-- d-pad -->
-  <rect x="250" y="486" width="48" height="144" rx="16" fill="#4B3F9E"/>
-  <rect x="202" y="534" width="144" height="48" rx="16" fill="#4B3F9E"/>
-
-  <!-- face buttons -->
-  <circle cx="700" cy="500" r="32" fill="#7DE2D1"/>
-  <circle cx="772" cy="572" r="32" fill="#FF8FB8"/>
-
-  <!-- the "hub": the central node connecting everything -->
-  <circle cx="512" cy="488" r="34" fill="#7DE2D1"/>
-  <circle cx="512" cy="488" r="70" fill="none" stroke="#7DE2D1" stroke-width="10" opacity="0.45"/>
+  <g font-family="'Arial Black', 'Segoe UI Black', Impact, sans-serif" font-weight="900" text-anchor="middle">
+    <text x="512" y="590" font-size="350" fill="#FFFFFF" letter-spacing="-8">F95</text>
+    <text x="512" y="815" font-size="168" fill="#C43C37" letter-spacing="2">HUB</text>
+  </g>
 </svg>

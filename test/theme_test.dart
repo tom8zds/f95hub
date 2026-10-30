@@ -6,10 +6,13 @@ import 'package:f95hub/i18n/i18n.dart';
 import 'package:f95hub/theme/app_theme.dart';
 
 void main() {
-  test('five presets map to five distinct schemes', () {
+  test('presets map to distinct schemes (material shares red)', () {
     final schemes = ThemePreset.values.map(flexSchemeOf).toSet();
     expect(ThemePreset.values.length, 5);
-    expect(schemes.length, 5);
+    // The default "material" preset now uses the f95zone red — the same scheme
+    // as the explicit "red" preset — so five presets resolve to four schemes.
+    expect(schemes.length, 4);
+    expect(flexSchemeOf(ThemePreset.material), flexSchemeOf(ThemePreset.red));
   });
 
   test('every preset has a distinct, non-empty label', () {
@@ -101,8 +104,9 @@ void main() {
 
   testWidgets('distinct presets yield distinct light primary colors',
       (tester) async {
+    // "material" and "red" share the f95zone red, hence four distinct primaries.
     final primaries =
         ThemePreset.values.map((p) => buildThemes(p).light.colorScheme.primary).toSet();
-    expect(primaries.length, 5);
+    expect(primaries.length, 4);
   });
 }

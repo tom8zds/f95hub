@@ -12,7 +12,10 @@ const String cjkFontFamily = 'NotoSansSC';
 
 /// Maps a [ThemePreset] to its [FlexScheme] color set (Material 3).
 FlexScheme flexSchemeOf(ThemePreset preset) => switch (preset) {
-      ThemePreset.material => FlexScheme.material,
+      // The app's own black-and-red identity: the default preset is the
+      // f95zone red, so a fresh install opens on the black/red (dark) and
+      // white/red (light) pair rather than Material's purple baseline.
+      ThemePreset.material => FlexScheme.redM3,
       ThemePreset.materialYou => FlexScheme.materialBaseline,
       ThemePreset.blue => FlexScheme.blueM3,
       ThemePreset.green => FlexScheme.greenM3,
