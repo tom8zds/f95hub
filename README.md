@@ -1,5 +1,7 @@
 # f95hub
 
+<img src="docs/branding/icon.png" width="96" align="right" alt="f95hub icon">
+
 A native desktop client for browsing [f95zone](https://f95zone.to) — the games
 listing, thread details, and a local library — built with Flutter.
 
