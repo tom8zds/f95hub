@@ -232,6 +232,7 @@ class Translations$settings$en {
 	late final Translations$settings$network$en network = Translations$settings$network$en.internal(_root);
 	late final Translations$settings$aria2$en aria2 = Translations$settings$aria2$en.internal(_root);
 	late final Translations$settings$login$en login = Translations$settings$login$en.internal(_root);
+	late final Translations$settings$about$en about = Translations$settings$about$en.internal(_root);
 }
 
 // Path: languages
@@ -929,6 +930,24 @@ class Translations$settings$login$en {
 	String get sessionCookieHelp => 'Paste xf_user/cf_clearance from your browser';
 }
 
+// Path: settings.about
+class Translations$settings$about$en {
+	Translations$settings$about$en.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Version {version}'
+	String version({required Object version}) => 'Version ${version}';
+
+	/// en: 'Made by {author}'
+	String author({required Object author}) => 'Made by ${author}';
+
+	/// en: 'GitHub repository'
+	String get github => 'GitHub repository';
+}
+
 // Path: theme.presets
 class Translations$theme$presets$en {
 	Translations$theme$presets$en.internal(this._root);
@@ -937,20 +956,14 @@ class Translations$theme$presets$en {
 
 	// Translations
 
-	/// en: 'Material'
-	String get material => 'Material';
-
-	/// en: 'Material You'
-	String get materialYou => 'Material You';
+	/// en: 'Black & red'
+	String get material => 'Black & red';
 
 	/// en: 'Blue'
 	String get blue => 'Blue';
 
 	/// en: 'Green'
 	String get green => 'Green';
-
-	/// en: 'Red'
-	String get red => 'Red';
 }
 
 // Path: filters.date
@@ -1084,17 +1097,18 @@ extension on Translations {
 			'settings.login.notLoggedIn' => 'Not logged in',
 			'settings.login.sessionCookie' => 'Session cookie',
 			'settings.login.sessionCookieHelp' => 'Paste xf_user/cf_clearance from your browser',
+			'settings.about.version' => ({required Object version}) => 'Version ${version}',
+			'settings.about.author' => ({required Object author}) => 'Made by ${author}',
+			'settings.about.github' => 'GitHub repository',
 			'languages.system' => 'System',
 			'languages.en' => 'English',
 			'languages.zh' => '中文',
 			'theme.dark' => 'Dark theme',
 			'theme.switchToLight' => 'Switch to light theme',
 			'theme.switchToDark' => 'Switch to dark theme',
-			'theme.presets.material' => 'Material',
-			'theme.presets.materialYou' => 'Material You',
+			'theme.presets.material' => 'Black & red',
 			'theme.presets.blue' => 'Blue',
 			'theme.presets.green' => 'Green',
-			'theme.presets.red' => 'Red',
 			'cache.title' => 'Cache',
 			'cache.gamesCached' => ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('en'))(n, one: '1 game cached', other: '${n} games cached', ), 
 			'cache.lastUpdatedNever' => 'Last updated: never',

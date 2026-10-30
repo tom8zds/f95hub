@@ -11,11 +11,13 @@ import 'package:f95hub/state/game_index.dart';
 import 'package:f95hub/state/game_list.dart';
 import 'package:f95hub/state/library.dart';
 import 'package:f95hub/state/session.dart';
+import 'package:f95hub/widgets/about_footer.dart';
 import 'package:f95hub/widgets/theme_swatch_picker.dart';
 
 import 'support/fake_config_store.dart';
 import 'support/fake_metadata_source.dart';
 import 'support/fake_session_store.dart';
+import 'support/golden_assets.dart';
 
 /// An in-memory database for the settings page's cache section.
 LibraryDatabase _memoryDatabase() {
@@ -116,7 +118,7 @@ void main() {
         ),
       ),
     );
-    expect(find.byType(ThemeSwatch), findsNWidgets(5));
+    expect(find.byType(ThemeSwatch), findsNWidgets(3));
     for (final preset in ThemePreset.values) {
       expect(
         find.byKey(ValueKey('theme_swatch_${preset.name}')),
@@ -153,10 +155,25 @@ void main() {
     );
     await container.read(configProvider.notifier).load();
     await tester.pump();
+    await tester.pump();
+    await settleMountedImages(tester);
 
     await expectLater(
       find.byType(SettingsPage),
       matchesGoldenFile('goldens/settings_page.png'),
+    );
+  });
+
+  testWidgets('AboutFooter golden', (tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(home: Scaffold(body: AboutFooter())),
+    );
+    await tester.pump();
+    await settleMountedImages(tester);
+
+    await expectLater(
+      find.byType(AboutFooter),
+      matchesGoldenFile('goldens/about_footer.png'),
     );
   });
 
@@ -279,13 +296,13 @@ void main() {
     // Default theme is material.
     expect(container.read(configProvider).config?.theme, ThemePreset.material);
 
-    await tester.tap(find.byKey(const ValueKey('theme_swatch_red')));
+    await tester.tap(find.byKey(const ValueKey('theme_swatch_green')));
     await tester.pump();
 
     // The selection is written through immediately and reflects in state.
-    expect(store.saved?.theme, ThemePreset.red);
+    expect(store.saved?.theme, ThemePreset.green);
     expect(store.saved?.downloadDir, r'C:\games');
-    expect(container.read(configProvider).config?.theme, ThemePreset.red);
+    expect(container.read(configProvider).config?.theme, ThemePreset.green);
   });
 
   testWidgets('the fetch interval is edited in seconds and persisted in ms',

@@ -209,13 +209,13 @@ void main() {
 
     // Switching the persisted theme updates the MaterialApp immediately.
     await container.read(configProvider.notifier).save(
-          const Config(downloadDir: r'C:\games', theme: ThemePreset.red),
+          const Config(downloadDir: r'C:\games', theme: ThemePreset.blue),
         );
     await tester.pump();
 
     expect(
       themeOf().colorScheme,
-      buildThemes(ThemePreset.red).light.colorScheme,
+      buildThemes(ThemePreset.blue).light.colorScheme,
     );
   });
 }

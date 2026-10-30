@@ -38,7 +38,7 @@ void main() {
       ),
     );
 
-    expect(find.byType(ThemeSwatch), findsNWidgets(5));
+    expect(find.byType(ThemeSwatch), findsNWidgets(3));
     expect(find.byIcon(Icons.check), findsOneWidget);
     expect(_borderWidth(tester, ThemePreset.material), 3);
     expect(_borderWidth(tester, ThemePreset.green), 1);

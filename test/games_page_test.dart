@@ -553,7 +553,7 @@ void main() {
     expect(find.text('Sample Game 0'), findsOneWidget);
 
     await container.read(configProvider.notifier).save(
-      container.read(configProvider).config!.copyWith(theme: ThemePreset.red),
+      container.read(configProvider).config!.copyWith(theme: ThemePreset.blue),
     );
     await tester.pump();
     await tester.pump();

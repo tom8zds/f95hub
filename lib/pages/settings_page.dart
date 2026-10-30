@@ -7,6 +7,7 @@ import '../state/config.dart';
 import '../state/game_index.dart';
 import '../state/library.dart';
 import '../state/session.dart';
+import '../widgets/about_footer.dart';
 import '../widgets/cache_section.dart';
 import '../theme/tokens.dart';
 import '../widgets/page_frame.dart';
@@ -33,42 +34,51 @@ class SettingsPage extends ConsumerWidget {
       leading: leading,
       title: context.t.settings.title,
       loading: ref.watch(gameIndexProvider).busy,
-      child: ListView(
-        padding: const EdgeInsets.all(16),
+      child: Column(
         children: [
-          ThemeSection(
-            value: config?.theme ?? ThemePreset.material,
-            onChanged: (v) => _save(ref, (c) => c.copyWith(theme: v)),
-          ),
-          const SizedBox(height: 16),
-          LanguageSection(
-            value: config?.language ?? AppLanguage.system,
-            onChanged: (v) => _save(ref, (c) => c.copyWith(language: v)),
-          ),
-          const SizedBox(height: 16),
-          StorageDirSection(
-            value: config?.storageDir,
-            fallback: config?.downloadDir,
-            onBrowse: () => _pickStorageDir(ref),
-          ),
-          const SizedBox(height: 16),
-          const CacheSettingsSection(),
-          const SizedBox(height: 16),
-          FetchIntervalSection(
-            intervalMs: config?.requestIntervalMs ??
-                Config.defaultRequestIntervalMs,
-            onChanged: (ms) => _save(
-              ref,
-              (c) => c.copyWith(requestIntervalMs: ms),
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.all(16),
+              children: [
+                ThemeSection(
+                  value: config?.theme ?? ThemePreset.material,
+                  onChanged: (v) => _save(ref, (c) => c.copyWith(theme: v)),
+                ),
+                const SizedBox(height: 16),
+                LanguageSection(
+                  value: config?.language ?? AppLanguage.system,
+                  onChanged: (v) => _save(ref, (c) => c.copyWith(language: v)),
+                ),
+                const SizedBox(height: 16),
+                StorageDirSection(
+                  value: config?.storageDir,
+                  fallback: config?.downloadDir,
+                  onBrowse: () => _pickStorageDir(ref),
+                ),
+                const SizedBox(height: 16),
+                const CacheSettingsSection(),
+                const SizedBox(height: 16),
+                FetchIntervalSection(
+                  intervalMs: config?.requestIntervalMs ??
+                      Config.defaultRequestIntervalMs,
+                  onChanged: (ms) => _save(
+                    ref,
+                    (c) => c.copyWith(requestIntervalMs: ms),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                LoginSection(
+                  session: session,
+                  onLogin: (cookie) =>
+                      ref.read(sessionProvider.notifier).login(cookie),
+                  onLogout: () => ref.read(sessionProvider.notifier).logout(),
+                ),
+              ],
             ),
           ),
-          const SizedBox(height: 16),
-          LoginSection(
-            session: session,
-            onLogin: (cookie) =>
-                ref.read(sessionProvider.notifier).login(cookie),
-            onLogout: () => ref.read(sessionProvider.notifier).logout(),
-          ),
+          // Pinned to the page's bottom edge: the app mark, its version, the
+          // author and the GitHub link stay visible without scrolling.
+          const AboutFooter(),
         ],
       ),
     );

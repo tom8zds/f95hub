@@ -16,19 +16,15 @@ FlexScheme flexSchemeOf(ThemePreset preset) => switch (preset) {
       // f95zone red, so a fresh install opens on the black/red (dark) and
       // white/red (light) pair rather than Material's purple baseline.
       ThemePreset.material => FlexScheme.redM3,
-      ThemePreset.materialYou => FlexScheme.materialBaseline,
       ThemePreset.blue => FlexScheme.blueM3,
       ThemePreset.green => FlexScheme.greenM3,
-      ThemePreset.red => FlexScheme.redM3,
     };
 
 /// Localized label for each preset (shown in the settings selector).
 String themeLabelOf(ThemePreset preset, Translations t) => switch (preset) {
       ThemePreset.material => t.theme.presets.material,
-      ThemePreset.materialYou => t.theme.presets.materialYou,
       ThemePreset.blue => t.theme.presets.blue,
       ThemePreset.green => t.theme.presets.green,
-      ThemePreset.red => t.theme.presets.red,
     };
 
 /// Maps the persisted [AppThemeMode] to Flutter's [ThemeMode] for

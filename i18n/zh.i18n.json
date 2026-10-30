@@ -72,6 +72,11 @@
       "notLoggedIn": "未登录",
       "sessionCookie": "会话 Cookie",
       "sessionCookieHelp": "粘贴浏览器中的 xf_user/cf_clearance"
+    },
+    "about": {
+      "version": "版本 {version}",
+      "author": "作者 {author}",
+      "github": "GitHub 仓库"
     }
   },
   "languages": {
@@ -84,11 +89,9 @@
     "switchToLight": "切换到浅色主题",
     "switchToDark": "切换到深色主题",
     "presets": {
-      "material": "Material",
-      "materialYou": "Material You",
+      "material": "黑红",
       "blue": "蓝色",
-      "green": "绿色",
-      "red": "红色"
+      "green": "绿色"
     }
   },
   "cache": {

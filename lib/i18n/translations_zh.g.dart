@@ -149,6 +149,7 @@ class _Translations$settings$zh extends Translations$settings$en {
 	@override late final _Translations$settings$network$zh network = _Translations$settings$network$zh._(_root);
 	@override late final _Translations$settings$aria2$zh aria2 = _Translations$settings$aria2$zh._(_root);
 	@override late final _Translations$settings$login$zh login = _Translations$settings$login$zh._(_root);
+	@override late final _Translations$settings$about$zh about = _Translations$settings$about$zh._(_root);
 }
 
 // Path: languages
@@ -506,6 +507,18 @@ class _Translations$settings$login$zh extends Translations$settings$login$en {
 	@override String get sessionCookieHelp => '粘贴浏览器中的 xf_user/cf_clearance';
 }
 
+// Path: settings.about
+class _Translations$settings$about$zh extends Translations$settings$about$en {
+	_Translations$settings$about$zh._(TranslationsZh root) : this._root = root, super.internal(root);
+
+	final TranslationsZh _root; // ignore: unused_field
+
+	// Translations
+	@override String version({required Object version}) => '版本 ${version}';
+	@override String author({required Object author}) => '作者 ${author}';
+	@override String get github => 'GitHub 仓库';
+}
+
 // Path: theme.presets
 class _Translations$theme$presets$zh extends Translations$theme$presets$en {
 	_Translations$theme$presets$zh._(TranslationsZh root) : this._root = root, super.internal(root);
@@ -513,11 +526,9 @@ class _Translations$theme$presets$zh extends Translations$theme$presets$en {
 	final TranslationsZh _root; // ignore: unused_field
 
 	// Translations
-	@override String get material => 'Material';
-	@override String get materialYou => 'Material You';
+	@override String get material => '黑红';
 	@override String get blue => '蓝色';
 	@override String get green => '绿色';
-	@override String get red => '红色';
 }
 
 // Path: filters.date
@@ -625,17 +636,18 @@ extension on TranslationsZh {
 			'settings.login.notLoggedIn' => '未登录',
 			'settings.login.sessionCookie' => '会话 Cookie',
 			'settings.login.sessionCookieHelp' => '粘贴浏览器中的 xf_user/cf_clearance',
+			'settings.about.version' => ({required Object version}) => '版本 ${version}',
+			'settings.about.author' => ({required Object author}) => '作者 ${author}',
+			'settings.about.github' => 'GitHub 仓库',
 			'languages.system' => '跟随系统',
 			'languages.en' => 'English',
 			'languages.zh' => '中文',
 			'theme.dark' => '深色主题',
 			'theme.switchToLight' => '切换到浅色主题',
 			'theme.switchToDark' => '切换到深色主题',
-			'theme.presets.material' => 'Material',
-			'theme.presets.materialYou' => 'Material You',
+			'theme.presets.material' => '黑红',
 			'theme.presets.blue' => '蓝色',
 			'theme.presets.green' => '绿色',
-			'theme.presets.red' => '红色',
 			'cache.title' => '缓存',
 			'cache.gamesCached' => ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('zh'))(n, one: '已缓存 1 个游戏', other: '已缓存 ${n} 个游戏', ), 
 			'cache.lastUpdatedNever' => '最后更新：从未',

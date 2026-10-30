@@ -9,10 +9,8 @@ library;
 /// values are stable across releases (never reorder or rename an entry).
 enum ThemePreset {
   material,
-  materialYou,
   blue,
-  green,
-  red;
+  green;
 
   /// Parses a persisted [name], falling back to [material] for unknown or
   /// legacy values so older config files keep loading.

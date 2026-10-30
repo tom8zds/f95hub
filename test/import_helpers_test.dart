@@ -299,7 +299,7 @@ void main() {
       expect(await File(p.join(target.path, 'a.txt')).exists(), isTrue);
     });
 
-    test('keeps a new version beside an existing install', () async {
+    test('replaces an existing install with the new version', () async {
       final existing = Directory(p.join(storage.path, 'My Game'));
       await existing.create();
       await File(p.join(existing.path, 'old.txt')).writeAsString('old');
@@ -308,28 +308,18 @@ void main() {
         root: storage.path,
         title: 'My Game',
         source: picked.path,
-        version: '1.5.0',
       );
 
-      expect(path, p.join(storage.path, 'My Game 1.5.0'));
-      expect(await File(p.join(existing.path, 'old.txt')).exists(), isTrue);
+      expect(path, p.join(storage.path, 'My Game'));
       expect(await File(p.join(path, 'a.txt')).exists(), isTrue);
+      expect(await File(p.join(path, 'old.txt')).exists(), isFalse);
       expect(await Directory(picked.path).exists(), isFalse);
-    });
-
-    test('numbers repeated imports of the same version', () async {
-      await Directory(p.join(storage.path, 'My Game')).create();
-      await Directory(p.join(storage.path, 'My Game 1.5.0')).create();
-
-      final path = await moveIntoLibraryRoot(
-        root: storage.path,
-        title: 'My Game',
-        source: picked.path,
-        version: '1.5.0',
-      );
-
-      expect(path, p.join(storage.path, 'My Game 1.5.0 (2)'));
-      expect(await File(p.join(path, 'a.txt')).exists(), isTrue);
+      // The replaced install and its staging folder are both gone.
+      final names = await Directory(storage.path)
+          .list()
+          .map((e) => p.basename(e.path))
+          .toSet();
+      expect(names, {'My Game'});
     });
   });
 

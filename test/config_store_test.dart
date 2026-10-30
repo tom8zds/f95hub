@@ -61,7 +61,7 @@ void main() {
       const Config(
         downloadDir: r'C:\games',
         storageDir: r'D:\library',
-        theme: ThemePreset.red,
+        theme: ThemePreset.green,
       ),
     );
 

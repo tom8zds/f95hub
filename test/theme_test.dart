@@ -1,3 +1,4 @@
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -6,20 +7,19 @@ import 'package:f95hub/i18n/i18n.dart';
 import 'package:f95hub/theme/app_theme.dart';
 
 void main() {
-  test('presets map to distinct schemes (material shares red)', () {
+  test('presets map to distinct schemes', () {
     final schemes = ThemePreset.values.map(flexSchemeOf).toSet();
-    expect(ThemePreset.values.length, 5);
-    // The default "material" preset now uses the f95zone red — the same scheme
-    // as the explicit "red" preset — so five presets resolve to four schemes.
-    expect(schemes.length, 4);
-    expect(flexSchemeOf(ThemePreset.material), flexSchemeOf(ThemePreset.red));
+    expect(ThemePreset.values.length, 3);
+    expect(schemes.length, 3);
+    // The default preset is the f95zone red (black/red dark, white/red light).
+    expect(flexSchemeOf(ThemePreset.material), FlexScheme.redM3);
   });
 
   test('every preset has a distinct, non-empty label', () {
     final t = AppLocale.en.buildSync();
     final labels =
         ThemePreset.values.map((preset) => themeLabelOf(preset, t)).toSet();
-    expect(labels.length, 5);
+    expect(labels.length, 3);
     expect(labels.every((l) => l.isNotEmpty), isTrue);
   });
 
@@ -83,7 +83,7 @@ void main() {
 
   testWidgets('swatch quadrants use the four scheme accent colors',
       (tester) async {
-    final scheme = colorSchemeOf(ThemePreset.red);
+    final scheme = colorSchemeOf(ThemePreset.material);
     // All four quadrants are visually distinct accents.
     expect(
       {
@@ -104,9 +104,8 @@ void main() {
 
   testWidgets('distinct presets yield distinct light primary colors',
       (tester) async {
-    // "material" and "red" share the f95zone red, hence four distinct primaries.
     final primaries =
         ThemePreset.values.map((p) => buildThemes(p).light.colorScheme.primary).toSet();
-    expect(primaries.length, 4);
+    expect(primaries.length, 3);
   });
 }

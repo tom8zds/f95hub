@@ -108,7 +108,21 @@ class _HomeShellState extends State<HomeShell> {
       onDestinationSelected: _select,
       header: Padding(
         padding: const EdgeInsets.fromLTRB(28, 16, 16, 10),
-        child: Text('f95hub', style: Theme.of(context).textTheme.titleSmall),
+        child: Row(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(6),
+              child: Image.asset(
+                'assets/branding/icon_256.png',
+                width: 26,
+                height: 26,
+                filterQuality: FilterQuality.medium,
+              ),
+            ),
+            const SizedBox(width: 10),
+            Text('f95hub', style: Theme.of(context).textTheme.titleSmall),
+          ],
+        ),
       ),
       footer: const SafeArea(
         top: false,

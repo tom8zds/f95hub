@@ -14,6 +14,7 @@ import 'package:f95hub/state/library.dart';
 
 import 'support/fake_config_store.dart';
 import 'support/fake_metadata_source.dart';
+import 'support/golden_assets.dart';
 
 ({Widget widget, ProviderContainer container}) _scopeWith(
   Widget child, {
@@ -216,6 +217,7 @@ void main() {
 
     await tester.pumpWidget(_scope(_shell()));
     await tester.pump();
+    await settleMountedImages(tester);
 
     await expectLater(
       find.byType(HomeShell),

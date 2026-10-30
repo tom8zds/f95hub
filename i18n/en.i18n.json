@@ -72,6 +72,11 @@
       "notLoggedIn": "Not logged in",
       "sessionCookie": "Session cookie",
       "sessionCookieHelp": "Paste xf_user/cf_clearance from your browser"
+    },
+    "about": {
+      "version": "Version {version}",
+      "author": "Made by {author}",
+      "github": "GitHub repository"
     }
   },
   "languages": {
@@ -84,11 +89,9 @@
     "switchToLight": "Switch to light theme",
     "switchToDark": "Switch to dark theme",
     "presets": {
-      "material": "Material",
-      "materialYou": "Material You",
+      "material": "Black & red",
       "blue": "Blue",
-      "green": "Green",
-      "red": "Red"
+      "green": "Green"
     }
   },
   "cache": {

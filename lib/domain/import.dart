@@ -161,42 +161,50 @@ Future<void> moveDirectory(
 /// the folder stays where it is and [source] is returned unchanged. When the
 /// folder already is the target directory the move is skipped.
 ///
-/// When a folder already exists at the target (e.g. importing a newer version
-/// of a game already in the library), the new copy lands beside it as
-/// `<title> <version>` (or `<title> <date>`, then `(2)`, `(3)`, …) instead of
-/// failing with "path already exists".
+/// When a folder already exists at the target (importing a newer version of a
+/// game already in the library), the new folder *replaces* it: there is one
+/// install per game, so the old version is staged aside, the new one moved in,
+/// and only then the old copy deleted. A failed move puts the old folder back.
 Future<String> moveIntoLibraryRoot({
   required String? root,
   required String title,
   required String source,
-  String? version,
 }) async {
   final base = root?.trim();
   if (base == null || base.isEmpty) {
     return source;
   }
-  var dst = p.join(base, safeFolderName(title));
+  final dst = p.join(base, safeFolderName(title));
   if (p.equals(p.normalize(dst), p.normalize(source))) {
     return dst;
   }
+  String? backup;
   if (await FileSystemEntity.type(dst) != FileSystemEntityType.notFound) {
-    final trimmed = version?.trim() ?? '';
-    final suffix = trimmed.isNotEmpty ? trimmed : _folderStamp(DateTime.now());
-    dst = p.join(base, safeFolderName('$title $suffix'));
+    // Same volume as [dst], so this rename is cheap and atomic.
+    var staged = '$dst.replaced';
     var n = 2;
-    while (await FileSystemEntity.type(dst) != FileSystemEntityType.notFound) {
-      dst = p.join(base, safeFolderName('$title $suffix ($n)'));
+    while (await FileSystemEntity.type(staged) !=
+        FileSystemEntityType.notFound) {
+      staged = '$dst.replaced ($n)';
       n++;
     }
+    await Directory(dst).rename(staged);
+    backup = staged;
   }
-  await moveDirectory(source, dst);
+  try {
+    await moveDirectory(source, dst);
+  } catch (_) {
+    final old = backup;
+    if (old != null && await Directory(old).exists()) {
+      await Directory(old).rename(dst);
+    }
+    rethrow;
+  }
+  if (backup != null) {
+    await Directory(backup).delete(recursive: true);
+  }
   return dst;
 }
-
-/// Compact date stamp (`20261030`) used to name a versioned import.
-String _folderStamp(DateTime at) =>
-    '${at.year}${at.month.toString().padLeft(2, '0')}'
-    '${at.day.toString().padLeft(2, '0')}';
 
 Future<void> _collectFiles(Directory dir, List<File> out) async {
   await for (final entity in dir.list(followLinks: false)) {
